@@ -51,7 +51,7 @@ Here is a basic outline of my goals:
   - [ ] Circuit design in Logisim Evolution
   - [ ] Full emulator for Windows & Linux
   - [ ] Simple to use RISC Instruction Set
-  - [ ] (Mostly) POSIX-Compatible Operating System
+  - [ ] Basic Real-Time Operating System
 
 
 
