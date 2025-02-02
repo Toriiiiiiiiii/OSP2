@@ -11,7 +11,7 @@
   - [2.1 Initial Specification](#21--initial-specification)
   - [2.2 Registers](#22--registers)
   - [2.3 Arithmetic + Logic](#23--arithmetic--logic)
-  - [2.4 Branch Logic]()
+  - [2.4 Branch Logic](#24--branch-logic)
   - [2.5 Instruction Set]()
   - [2.6 Circuit Design]()
  
@@ -128,3 +128,19 @@ Control Unit to allow for the execution of conditional instructions. It is as fo
 
 Each bit in this register corresponds to a single flag, such as the Zero flag. For
 information on which instructions update which flags, please refer to section 2.5.
+
+### 2.4  Branch Logic
+
+One of the key aspects of all processors is the ability to jump from place to 
+place in a program. Without this ability, features such as function calling and
+loops would not be possible. In order to ensure maximum programmability, the OSP2
+features 1 unconditional jump instruction, 5 conditional jump instructions, and a 
+CALL and RETURN instruction. These instructions ensure that the processor is
+Turing-Complete and able to make use of subroutines.
+
+Branching logic is handled primarily by the control unit, which will only send the
+JUMP instruction to the program counter if the relevant ALU flag is set.
+
+The CALL instruction pushes the 3-byte value of the PC onto the stack, before then
+jumping to the address specified by the operand. Then, when the RETURN instruction
+is executed, the 3-byte value is retrieved from the stack and loaded into the PC.
