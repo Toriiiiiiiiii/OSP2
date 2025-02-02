@@ -10,7 +10,7 @@
 - [2.0   Design](#20--design)
   - [2.1 Initial Specification](#21--initial-specification)
   - [2.2 Registers](#22--registers)
-  - [2.3 Arithmetic + Logic]()
+  - [2.3 Arithmetic + Logic](#23--arithmetic--logic)
   - [2.4 Branch Logic]()
   - [2.5 Instruction Set]()
   - [2.6 Circuit Design]()
@@ -98,5 +98,33 @@ The registers are as follows:
 | SP   | 24        | Stack Pointer  |
 | CIR  | 8         | Current Instruction Register |
 | MBR  | 8         | Memory Buffer Register |
+| FLG  | 5         | Flag Register |
 
 ### 2.3  Arithmetic + Logic
+
+The ALU of the OSP2 is responsible for performing the basic operations
+such as addition and subtraction. It has two operating modes; 8-bit mode
+and 16-bit mode.
+
+By default, the ALU operates in 8-bit mode. In this state, it takes inputs
+each from the data bus and a register. It is then given an instruction from
+the control unit, before carrying out the operation and updating the relevant
+flags. The result is then stored to the register that gave its input.
+
+In 16-bit mode, the ALU takes its inputs from RAB and RCD, and the result is
+stored to the 16-bit register RAB. While this system is less flexible, it allows
+for the processor to work with 16-bit values, while retaining an 8-bit data bus.
+
+The flag register is a 5-bit register inside the ALU, that feeds its value into the
+Control Unit to allow for the execution of conditional instructions. It is as follows:
+
+    43210
+    ZCNLG
+    ||||+- Greater Than
+    |||+-- Less Than
+    ||+--- Negative
+    |+---- Carry
+    +----- Zero
+
+Each bit in this register corresponds to a single flag, such as the Zero flag. For
+information on which instructions update which flags, please refer to section 2.5.
