@@ -12,8 +12,9 @@
   - [2.2 Registers](#22--registers)
   - [2.3 Arithmetic + Logic](#23--arithmetic--logic)
   - [2.4 Branch Logic](#24--branch-logic)
-  - [2.5 Instruction Set]()
-  - [2.6 Circuit Design]()
+  - [2.5 Instruction Set](#25--instruction-set)
+  - [2.6 Control Word](#26--control-word)
+  - [2.7 Circuit Design]()
  
 - [3.0   Assembly Language]()
   - [3.1 Assembler Design]()
@@ -144,3 +145,52 @@ JUMP instruction to the program counter if the relevant ALU flag is set.
 The CALL instruction pushes the 3-byte value of the PC onto the stack, before then
 jumping to the address specified by the operand. Then, when the RETURN instruction
 is executed, the 3-byte value is retrieved from the stack and loaded into the PC.
+
+### 2.5  Instruction Set
+
+Each instruction for the OSP2 consists of a 1-byte instruction, followed by an operand
+consisting of up to 3 bytes.
+
+The instruction byte is composed as follows:
+
+    76543210
+    OOOOORRM
+    |||||||+- Operand Mode (1 = register, 0 = immediate value)
+    |||||++-- Register Select
+    +++++---- Opcode
+
+> **Note:** The *Operand Mode* bit is ignored for the LOAD, STORE, JUMP, CALL and RETURN instructions.
+> These instructions will always be followed by a 3-byte address to load/store to/from.
+
+The OSP2's instruction set is as follows:
+
+| Binary | Mneumonic | Flags affected | Description |
+|---|---|---|---|
+| 00000 | HALT | N/A | Halts the CPU. |
+| 00001 | LOAD | ZN | LOADS a value from memory into a register. |
+| 00010 | STORE | N/A | STORES a register's value to memory. |
+| 00011 | MOVE | ZN | Moves an immediate value or register's value to a register. |
+| 00100 | ADD | ZNC | Adds an immediate or register's value to a register. |
+| 00101 | SUB | ZNC | Subtracts an immediate or register's value from a register. |
+| 00110 | MUL | ZNC | Multiplies a register by a value. |
+| 00111 | DIV | ZN | Divides a register by a value. |
+| 01000 | MOD | ZN | Gives the remainder of the DIV instruction. |
+| 01001 | ADD16 | ZNC | Performs RAB + RCD |
+| 01010 | SUB16 | ZNC | Performs RAB - RCD |
+| 01011 | MUL16 | ZNC | Performs RAB * RCD |
+| 01100 | DIV16 | ZNC | Performs RAB / RCD |
+| 01101 | MOD16 | ZNC | Performs RAB % RCD |
+| 01110 | PUSH | N/A | Pushes a register or immediate value to the stack. |
+| 01111 | POP | ZN | Pops a value from the stack into a register. |
+| 10000 | JUMP | N/A | Unconditionally jumps to an address. |
+| 10001 | JMPZ | N/A | Jump if the zero flag is set. |
+| 10010 | JMPC | N/A | Jump if the carry flag is set. |
+| 10011 | JMPN | N/A | Jump if the negative flag is set. |
+| 10100 | JMPL | N/A | Jump if the less than flag is set. |
+| 10101 | JMPG | N/A | Jump if the greater than flag is set. |
+| 10110 | CALL | N/A | Pushes the PC to the stack and jumps to an address. |
+| 10111 | RETURN | N/A | Pops the PC from the stack. |
+| 11000 | CMP | ZGL | Compares the value of a register and an immediate/register. |
+| 11001 | CMP16 | ZGL | Compares RAB and RCD. |
+
+### 2.6  Control Word
