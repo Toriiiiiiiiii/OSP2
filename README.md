@@ -9,15 +9,15 @@
 
 - [2.0   Design](#20--design)
   - [2.1 Initial Specification](#21--initial-specification)
-  - [2.2 Registers]()
+  - [2.2 Registers](#22--registers)
   - [2.3 Arithmetic + Logic]()
   - [2.4 Branch Logic]()
   - [2.5 Instruction Set]()
   - [2.6 Circuit Design]()
  
 - [3.0   Assembly Language]()
-  - [3.1 Assembler Design
-  - [3.2 Assembler Syntax
+  - [3.1 Assembler Design]()
+  - [3.2 Assembler Syntax]()
  
 - [4.0   Emulator]()
   - [4.1 Design]()
@@ -64,3 +64,37 @@ a Reduced Instruction Set, meaning memory locations can only be
 changed or read through direct LOAD or STORE instructions. This
 greatly simplifies control logic, and reduces the number of 
 instructions or addressing modes needed.
+
+### 2.2  Registers
+
+The OSP2 makes use of a small number of internal registers in 
+order to perform operations on the contents of memory. These
+registers allow the programmer to perform arithmetic, logical
+and conditional instructions. These registers are split into
+2 categories: Programmable and Non-Programmable. As suggested
+by the names, programmable registers can be directly modified
+using instructions. The non-programmable registers, however,
+cannot be directly modified by most instructions.
+
+The registers are as follows:
+
+**Programmable Registers**
+| Binary Index | Name | Bit Width | Function |
+|--------------|------|-----------|----------|
+| 00           | RA   | 8         | General-Purpose |
+| 01           | RB   | 8         | General-Purpose |
+| 10           | RC   | 8         | General-Purpose |
+| 11           | RD   | 8         | General-Purpose |
+
+> **Note**: The 4 programmable registers are treated as 2 16-bit
+> registers in certain instructions. In these cases, the registers
+> are RAB and RCD (Where RA and RC represent the high bytes).
+
+**Non-Programmable Registers**
+| Name | Bit Width | Function |
+|------|-----------|----------|
+| PC   | 24        | Program Counter |
+| MAR  | 24        | Memory Address Register |
+| SP   | 24        | Stack Pointer  |
+| CIR  | 8         | Current Instruction Register |
+| MBR  | 8         | Memory Buffer Register |
