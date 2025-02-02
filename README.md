@@ -98,3 +98,5 @@ The registers are as follows:
 | SP   | 24        | Stack Pointer  |
 | CIR  | 8         | Current Instruction Register |
 | MBR  | 8         | Memory Buffer Register |
+
+### 2.3  Arithmetic + Logic
