@@ -31,7 +31,7 @@
 
 ### 1.1  Inspiration
 
-    OSP2 is a spiritual successor to an old 8-bit CPU I 
+OSP2 is a spiritual successor to an old 8-bit CPU I 
 designed half a year ago called the OSP-8. This project
 is intented to fix a number of issues and design mistakes
 I made during the development of that project, to create
@@ -39,7 +39,7 @@ a far more stable and efficient processor.
 
 ### 1.2  Project Goals
 
-    This project is intended to create a small, 8-bit 
+This project is intended to create a small, 8-bit 
 processor that is easy to write programs for. It is intended
 to be used in embedded systems, or for educational purposes.
 I am designing this system in the hope that someday, a person
@@ -58,7 +58,7 @@ Here is a basic outline of my goals:
 
 ### 2.1  Initial Specification
 
-    The OSP2 will be an 8-Bit processor with a 24-bit address
+The OSP2 will be an 8-Bit processor with a 24-bit address
 BUS, allowing it to acces 16MiB of memory. It will make use of 
 a Reduced Instruction Set, meaning memory locations can only be
 changed or read through direct LOAD or STORE instructions. This
