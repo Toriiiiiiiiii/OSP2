@@ -3,27 +3,27 @@
 
 ## Table Of Contents
 
-- 1.0   Introduction
-  - 1.1 Inspiration
-  - 1.2 Project Goals
+- [1.0   Introduction](#10--introduction)
+  - [1.1 Inspiration](#11--inspiration)
+  - [1.2 Project Goals](#12--project-goals)
 
-- 2.0   Design
-  - 2.1 Initial Specification
-  - 2.2 Registers
-  - 2.3 Arithmetic + Logic
-  - 2.4 Branch Logic
-  - 2.5 Instruction Set
-  - 2.6 Circuit Design
+- [2.0   Design](#20--design)
+  - [2.1 Initial Specification](#21--initial-specification)
+  - [2.2 Registers]()
+  - [2.3 Arithmetic + Logic]()
+  - [2.4 Branch Logic]()
+  - [2.5 Instruction Set]()
+  - [2.6 Circuit Design]()
  
-- 3.0   Assembly Language
-  - 3.1 Assembler Design
-  - 3.2 Assembler Syntax
+- [3.0   Assembly Language]()
+  - [3.1 Assembler Design
+  - [3.2 Assembler Syntax
  
-- 4.0   Emulator
-  - 4.1 Design
-  - 4.2 Features
-  - 4.3 Implementation
-  - 4.4 Usage
+- [4.0   Emulator]()
+  - [4.1 Design]()
+  - [4.2 Features]()
+  - [4.3 Implementation]()
+  - [4.4 Usage]()
 
 
 
